@@ -6,6 +6,7 @@
 
 #include <iostream>  
 #include <math.h>  
+#include <cstring.h>
 
 using namespace std; 
 double eta=0.5;//学习率  
@@ -63,6 +64,9 @@ double traversalcontrol::algorithmchose(int a, double carlength, double distance
         break;
     case 3:
         return npd();
+        break;
+	case 4:
+        return rbfpid();
         break;
     default:
         return purepursuit();
