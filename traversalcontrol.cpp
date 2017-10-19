@@ -7,6 +7,8 @@
 #include <iostream>  
 #include <math.h>  
 
+#include <cstring>
+
 
 using namespace std; 
 double eta=0.5;//学习率  
@@ -184,7 +186,7 @@ double traversalcontrol::rbfpid()
 	//航向角作为查分
 	updatePID(0,pidfactor->error);
 
-    outf<<"第"<<timeI<<"次迭代误差："<<pidfactor->error<<", P:"<<pidfactor->pfactor<<", I:"<<pidfactor->ifactor<<", D:"<<pidfactor->dfactor<<endl;
+    fpid<<"第"<<timeI<<"次迭代误差："<<pidfactor->error<<", P:"<<pidfactor->pfactor<<", I:"<<pidfactor->ifactor<<", D:"<<pidfactor->dfactor<<endl;
     timeI++;
 
 	double du=pidfactor->pfactor*xc[0]+pidfactor->dfactor*xc[1]+pidfactor->ifactor*xc[2];  

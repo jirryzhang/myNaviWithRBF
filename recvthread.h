@@ -42,6 +42,8 @@ public:
     QFile *fnameGPS;
     QString filename;
 
+	algorithm *pilotalg;
+
 private:
     volatile bool stopped;
 
@@ -53,7 +55,7 @@ private:
     int num485;
     int numGPS;
 
-    algorithm *pilotalg;
+    
 
 };
 

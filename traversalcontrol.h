@@ -1,12 +1,15 @@
 #ifndef TRAVERSALCONTROL_H
 #define TRAVERSALCONTROL_H
 
+#undef max
+#undef min
+#include<fstream>
+
 #include<math.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<data.h>
 
-#include<fstream>
 
 
 
@@ -66,16 +69,16 @@ private:
 	void updatePID(double yd,double ty);
 
 	double kp_1,ki_1,kd_1;
-	double inx[3];//ÊäÈëÏòÁ¿x  
-	double ci[6][3];//ÖĞĞÄÊ¸Á¿C  
-	double bi[6];//»ù¿íÏòÁ¿B  
-	double w[6];//È¨ÖµÏòÁ¿W  
-	double h[6];//¾¶Ïò»ùÏòÁ¿h  
+	double inx[3];//è¾“å…¥å‘é‡x  
+	double ci[6][3];//ä¸­å¿ƒçŸ¢é‡C  
+	double bi[6];//åŸºå®½å‘é‡B  
+	double w[6];//æƒå€¼å‘é‡W  
+	double h[6];//å¾„å‘åŸºå‘é‡h  
 	double ci_1[6][3],ci_2[6][3],ci_3[6][3];  
 	double bi_1[6],bi_2[6],bi_3[6];  
 	double w_1[6],w_2[6],w_3[6];  
 	double u,u_1,y_1;  
-	double xc[3];//ÔöÁ¿Ê½PIDµÄÊäÈë
+	double xc[3];//å¢é‡å¼PIDçš„è¾“å…¥
     unsigned int timeI;
 	//double outy,error;
 

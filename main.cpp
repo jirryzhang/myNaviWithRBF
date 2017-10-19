@@ -100,9 +100,10 @@ void orderhandle() {
     /* start pilot */
     case 10000:
         /* start pilot */
+        recvT->pilotalg->tracontrol->initPara();
         recvT->pilotflag = 1;
         fpid.open("data/pid.txt");
-        recvT->pilotalg->tracontrol->initPara();
+        //recvT->pilotalg->tracontrol->initPara();
         break;
     case 20000:
         /* stop pilot */
