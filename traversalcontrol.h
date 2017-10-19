@@ -6,6 +6,10 @@
 #include<stdlib.h>
 #include<data.h>
 
+#include<fstream>
+
+
+
 typedef struct PIDs
 {
     double pfactor;
@@ -41,6 +45,8 @@ public:
     double algorithmchose(int a, double carlength, double distance, double dnorth);
     void setPidFactor(int chose, double p, double i, double d);
 
+    void initPara();
+
 private:
     double l;
     double d;
@@ -56,7 +62,7 @@ private:
 	double caculateNorm2(double * tx,int count);
 	double caculateHj(double* tx,double * tc,int count,double tbij);
 	double caculateYpY(double * tx,double* ty,int count);
-	void initPara();
+    //void initPara();
 	void updatePID(double yd,double ty);
 
 	double kp_1,ki_1,kd_1;
@@ -70,6 +76,7 @@ private:
 	double w_1[6],w_2[6],w_3[6];  
 	double u,u_1,y_1;  
 	double xc[3];//增量式PID的输入
+    unsigned int timeI;
 	//double outy,error;
 
     PIDfactor *pidfactor;

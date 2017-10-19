@@ -5,6 +5,9 @@
 #include "recvthread.h"
 #include "recvthreadcan.h"
 
+
+extern std::ofstream fpid;
+
 /* 开启设备can0的命令,并设置波特率800k */
 #define COMMAND "/sbin/ip link set can0 type can bitrate 800000"
 #define UP "ifconfig can0 up"
@@ -81,6 +84,7 @@ int orderFlag=0;
 /* 接受上位机的命令的对象 */
 recvthread *recvT =new recvthread();
 recvthreadcan *recvSensor = new recvthreadcan();
+
 /* 处理接受上位机设置命令的函数 */
 void orderhandle() {
 
@@ -97,10 +101,13 @@ void orderhandle() {
     case 10000:
         /* start pilot */
         recvT->pilotflag = 1;
+        fpid.open("data/pid.txt");
+        recvT->pilotalg->tracontrol->initPara();
         break;
     case 20000:
         /* stop pilot */
         recvT->pilotflag = 2;
+        fpid.close();
         break;
         /* 设置AB点的指令 */
     case 40003:

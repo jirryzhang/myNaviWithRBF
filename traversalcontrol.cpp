@@ -7,11 +7,13 @@
 #include <iostream>  
 #include <math.h>  
 
+
 using namespace std; 
 double eta=0.5;//学习率  
 double alfa=0.05;//动量因子
 double etaP=0.15,etaI=0.15,etaD=0.15;//P,I,D系数调整速度  
 
+std::ofstream fpid;
 
 traversalcontrol::traversalcontrol()
 {
@@ -182,6 +184,9 @@ double traversalcontrol::rbfpid()
 	//航向角作为查分
 	updatePID(0,pidfactor->error);
 
+    outf<<"第"<<timeI<<"次迭代误差："<<pidfactor->error<<", P:"<<pidfactor->pfactor<<", I:"<<pidfactor->ifactor<<", D:"<<pidfactor->dfactor<<endl;
+    timeI++;
+
 	double du=pidfactor->pfactor*xc[0]+pidfactor->dfactor*xc[1]+pidfactor->ifactor*xc[2];  
 	u=u_1+du;  
 	//u = pidfactor->pfactor*pidfactor->error + pidfactor->ifactor*pidfactor->sumerror + pidfactor->dfactor*(data::dnorth/180*M_PI);
@@ -254,6 +259,8 @@ double traversalcontrol::caculateYpY( double * tx,double* ty,int count )
 
 void traversalcontrol::initPara()
 {
+    timeI=0;
+
 	pidfactor->error=pidfactor->error_2=pidfactor->lasterror=y_1=0;  
 	kp_1=0.2,ki_1=0.01,kd_1=1.2;  
 
